@@ -9,19 +9,21 @@ if len(sys.argv) >= 2:
 	orden = sys.argv[1]
 	if len(sys.argv) == 3:
 		comp = sys.argv[2]
+	else:
+		comp = ""
 else:
-	logging.info("Debes introducir una orden.")
+	logging.error("Debes introducir una orden.")
 	exit()
 
-if orden == "1":
-	if len(sys.argv) == 3:
-		comp = None
-	call["python3", "mvpesada.py"]
-elif orden == "2":
+if orden == "monolith":
+	call(["python3", "MVPesada/mvpesada.py"])
+elif orden == "docker":
 	if comp == "start":
-		call["python3", "docker.py"]
+		call(["python3", "dockerVirtualizacionL/docker.py"])
 	elif comp == "stop":
-		call["python3", "stopDocker.py"]
+		call(["python3", "dockerVirtualizacionL/stopDocker.py"])
 	else:
-		logging.info("Error: el tercer parámetro solo puede ser \"start\" o \"stop\"")
+		logging.error("Error: el tercer parámetro solo puede ser \"start\" o \"stop\"")
 		exit()
+else:
+	logging.error("El primer parámetro solo puede ser: \"monolith\", \"docker\", \"compose\" o \"kubernetes\"")
