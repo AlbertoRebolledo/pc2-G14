@@ -26,5 +26,5 @@ with open("practica_creativa2/bookinfo/src/productpage/templates/productpage.htm
     x = x.replace("{% block title %}Simple Bookstore App{% endblock %}", "{% block title %}G"+os.environ['GROUP_NUMBER']+"{% endblock %}")
     file.write(x)
 
-call(["sudo","docker","build","-t","pc2:3.8","."])
-call(["sudo","docker","run","--name","pc2","-p9080:9080","pc2:3.8"])
+call(["sudo","docker","build","-t","pc2","."])
+call(["sudo","docker","run","-d","--name","pc2","-p9080:9080","pc2"])
