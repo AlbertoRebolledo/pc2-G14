@@ -7,7 +7,7 @@ logger = logging.getLogger("logger")
 # Mensaje de prueba
 if len(sys.argv) >= 2:
 	orden = sys.argv[1]
-	if len(sys.argv) = 3:
+	if len(sys.argv) == 3:
 		comp = sys.argv[2]
 else:
 	logging.info("Debes introducir una orden.")
