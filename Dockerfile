@@ -2,10 +2,14 @@ FROM python:3.8
 
 RUN apt-get update && apt-get -y install python3-pip
 
-COPY practica_creativa2 /home/
+ENV GROUP_NUMBER 14
 
-RUN pip3 install -r /home/bookinfo/src/productpage/requirements.txt
+RUN mkdir /home/app/
+
+COPY practica_creativa2 /home/app/
+
+COPY internal.py /home/app/
 
 EXPOSE 9080
 
-ENTRYPOINT python3 /home/bookinfo/src/productpage/productpage_monolith.py 9080
+ENTRYPOINT python3 /home/app/internal.py
