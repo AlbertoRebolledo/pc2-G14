@@ -1,21 +1,22 @@
-version: "{version de tu contenedor/aplicación}" // IMPORTANTES las comillas dobles
-services: // aquí van los distintos contenedores de tu composición
-    chanchito: // configuración de chanchito, contenedor de mi aplicación (miapp)
-        build: {ruta donde se encuentra el Dockerfile a seguir}
-        ports: // puertos de la aplicación de ESTE contenedor
-            - "3000:3000" // importante el -
-        links:
-            - monguito // sin comillas
-    monguito: // configuración de monguito, contenedor del servicio de mongo
-        image: mongo
-        ports:
-            - "27017:27017"
-        environment:
-            - {NOMBRE_VAR1}={VALOR_VAR1}
-            - {NOMBRE_VAR2}={VALOR_VAR2}
-            - ...
-        volumes:
-            - mongo-data:/data/db // ruta del contenedor donde va a ser montado el volumen
+version: "1.0"
+services:
+  productpage:
+    build: ProductPage/
+    ports:
+      - "9080:9080"
+    links:
+      - details
+      - reviews
+  details:
+    build: Details/
+  reviews:
 
-volumes:
-    mongo-data:
+    image: reviews
+    environment:
+          - service_version=v3
+          - enable_ratings=true
+          - star_color=red
+    links:
+      - ratings
+  ratings:
+      build: Ratings/

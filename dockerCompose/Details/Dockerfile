@@ -8,7 +8,7 @@ RUN apt-get update
 
 RUN mkdir /opt/microservices/
 
-COPY ../practica_creativa2/bookinfo/src/details/details.rb /opt/microservices/
+COPY details.rb /opt/microservices/
 
 EXPOSE 9080
 

@@ -6,9 +6,9 @@ RUN apt-get update
 
 RUN mkdir /opt/microservices/
 
-COPY ../practica_creativa2/bookinfo/src/ratings/package.json /opt/microservices/
+COPY package.json /opt/microservices/
 
-COPY ../practica_creativa2/bookinfo/src/ratings/ratings.js /opt/microservices/
+COPY ratings.js /opt/microservices/
 
 WORKDIR /opt/microservices/
 
