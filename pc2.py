@@ -1,5 +1,6 @@
 from subprocess import call
 import sys
+import os
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -12,18 +13,25 @@ if len(sys.argv) >= 2:
 	else:
 		comp = ""
 else:
-	logging.error("Debes introducir una orden.")
+	logger.error("Debes introducir una orden.")
 	exit()
 
 if orden == "monolith":
-	call(["python3", "MVPesada/mvpesada.py"])
+	os.chdir(r"./MVPesada")
+	logger.info(os.getcwd())
+	call(["python3", "mvpesada.py"])
 elif orden == "docker":
+	os.chdir(r"./dockerVirtualizacionL")
+	logger.info(os.getcwd())
 	if comp == "start":
-		call(["python3", "dockerVirtualizacionL/docker.py"])
+		call(["python3", "docker.py"])
 	elif comp == "stop":
-		call(["python3", "dockerVirtualizacionL/stopDocker.py"])
+		call(["python3", "stopDocker.py"])
 	else:
-		logging.error("Error: el tercer parámetro solo puede ser \"start\" o \"stop\"")
+		logger.error("Error: el tercer parámetro solo puede ser \"start\" o \"stop\"")
 		exit()
+elif orden == "compose":
+	os.chdir(r"./dockerCompose")
+	logger.info(os.getcwd())
 else:
 	logging.error("El primer parámetro solo puede ser: \"monolith\", \"docker\", \"compose\" o \"kubernetes\"")
