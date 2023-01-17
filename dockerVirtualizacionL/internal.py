@@ -1,6 +1,10 @@
 from subprocess import call
 import sys
 import os
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("logger")
 
 #------------------modificar requirements.txt-------------------------------------------------------
 with open("/home/app/bookinfo/src/productpage/requirements.txt","r") as file: 
@@ -22,3 +26,4 @@ with open("/home/app/bookinfo/src/productpage/templates/productpage.html","w") a
 call(["pip3","install","-r","/home/app/bookinfo/src/productpage/requirements.txt"])
 
 call(["python3","/home/app/bookinfo/src/productpage/productpage_monolith.py","9080"])
+logger.info("¡¡¡Aplicación operativa!!!")
