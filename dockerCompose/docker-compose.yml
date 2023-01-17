@@ -1,22 +1,21 @@
-version: "1.0"
+version: "2.2"
 services:
-  productpage:
-    build: ProductPage/
+  g14-details:
+    image: g14/details
+  g14-ratings:
+      image: g14/ratings
+  g14-reviews:
+    image: g14/reviews
+    environment:
+          - service_version=v1
+          - enable_ratings=false
+          - star_color=black
+    links:
+      - g14-ratings
+  g14-productpage:
+    image: g14/productpage
     ports:
       - "9080:9080"
     links:
-      - details
-      - reviews
-  details:
-    build: Details/
-  reviews:
-
-    image: reviews
-    environment:
-          - service_version=v3
-          - enable_ratings=true
-          - star_color=red
-    links:
-      - ratings
-  ratings:
-      build: Ratings/
+      - g14-details
+      - g14-reviews

@@ -24,15 +24,18 @@ def cambiarCompose(version):
         f.writelines(lines_color)
 
 version = sys.argv[1]
-print(version)
-'''
+
+#-----------------------------cambiar versión en fichero compose-----------------------------------------
+cambiarCompose(version)
+
 #------------------------comandos de instalación-------------------------------------------------------
 call(["git","clone","https://github.com/CDPS-ETSIT/practica_creativa2.git"])
 call(["sudo","apt","update"])
 call(["sudo","apt","install","docker.io"])
+call(["sudo","apt","install","docker-compose"])
 
 #-------------------------mover ficheros------------------------------------------
-call(["cp","practica_creativa2/bookinfo/src/productpage","ProductPage/"])
+call(["cp","-r","practica_creativa2/bookinfo/src/productpage/","ProductPage/"])
 call(["cp","practica_creativa2/bookinfo/src/details/details.rb","Details/"])
 call(["cp","practica_creativa2/bookinfo/src/ratings/package.json","Ratings/"])
 call(["cp","practica_creativa2/bookinfo/src/ratings/ratings.js","Ratings/"])
@@ -41,17 +44,20 @@ call(["cp","practica_creativa2/bookinfo/src/ratings/ratings.js","Ratings/"])
 os.chdir(r'practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg')
 pwd = os.getcwd()
 call(["sudo", "docker", "run", "--rm", "-u", "root", "-v", str(pwd)+":/home/gradle/project", "-w", "/home/gradle/project", "gradle:4.8.1", "gradle", "clean", "build"])
-'''
-    #----------------------imagenes de reviews---------------------------------------------------------------------------------hay que mirar lo de los argumentos
-cambiarCompose(version)
-'''
+os.chdir("../../../../../")
+    #----------------------------------------------imagenes de reviews-------------------------------------------------------------
+
 if version == "v1":
-    #call(["sudo","docker","build","-t","reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
+    call(["sudo","docker","build","-t","g14/reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
 elif version == "v2":
-    #call(["sudo","docker","build","-t","reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
+    call(["sudo","docker","build","-t","g14/reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
 elif version == "v3":
-    #call(["sudo","docker","build","-t","reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
+    call(["sudo","docker","build","-t","g14/reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
+
+#--------------------------------creación de las imagenes del resto de microservicios-------------------------
+call(["sudo","docker","build","-t","g14/productpage","ProductPage/"])
+call(["sudo","docker","build","-t","g14/details","Details/"])
+call(["sudo","docker","build","-t","g14/ratings","Ratings/"])
 
 #----------------------------docker-compose----------------------------------------------
-#call(["sudo","docker","compose","up"])
-'''
+call(["sudo","docker-compose","up","-d"])
