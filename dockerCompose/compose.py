@@ -44,7 +44,7 @@ call(["cp","practica_creativa2/bookinfo/src/ratings/ratings.js","Ratings/"])
 os.chdir(r'practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg')
 pwd = os.getcwd()
 call(["sudo", "docker", "run", "--rm", "-u", "root", "-v", str(pwd)+":/home/gradle/project", "-w", "/home/gradle/project", "gradle:4.8.1", "gradle", "clean", "build"])
-os.chdir("../../../../../")
+os.chdir(r"../../../../../")
     #----------------------------------------------imagenes de reviews-------------------------------------------------------------
 
 if version == "v1":
@@ -60,4 +60,4 @@ call(["sudo","docker","build","-t","g14/details","Details/"])
 call(["sudo","docker","build","-t","g14/ratings","Ratings/"])
 
 #----------------------------docker-compose----------------------------------------------
-call(["sudo","docker-compose","up","-d"])
+#call(["sudo","docker-compose","up","-d"])

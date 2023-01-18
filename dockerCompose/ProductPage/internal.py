@@ -11,10 +11,10 @@ with open("/home/app/requirements.txt","w") as file:
     file.write(r)
 
 #------------------modificar el productpage.html-------------------------------------------------------
-with open("/home/app/productpage.html","r") as file: 
+with open("/home/app/templates/productpage.html","r") as file: 
     x = file.read()
 
-with open("/home/app/productpage.html","w") as file:
+with open("/home/app/templates/productpage.html","w") as file:
     x = x.replace("{% block title %}Simple Bookstore App{% endblock %}", "{% block title %}G"+os.environ['GROUP_NUMBER']+"{% endblock %}")
     file.write(x)
 
