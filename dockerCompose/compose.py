@@ -5,21 +5,21 @@ import os
 def cambiarCompose(version):
     with open("docker-compose.yml", "r") as f:
         lines = f.readlines()
-        if version == "v1":
-            lines_version = ['          - service_version=v1\n' if "service_version" in line else line for line in lines]
-            lines_ratings = ['          - enable_ratings=false\n' if "enable_ratings" in line else line for line in lines_version]
-            lines_color = ['          - star_color=black\n' if "star_color" in line else line for line in lines_ratings]
-        elif version == "v2":
-            lines_version = ['          - service_version=v2\n' if "service_version" in line else line for line in lines]
-            lines_ratings = ['          - enable_ratings=true\n' if "enable_ratings" in line else line for line in lines_version]
-            lines_color = ['          - star_color=black\n' if "star_color" in line else line for line in lines_ratings]
-        elif version == "v3":
-            lines_version = ['          - service_version=v3\n' if "service_version" in line else line for line in lines]
-            lines_ratings = ['          - enable_ratings=true\n' if "enable_ratings" in line else line for line in lines_version]
-            lines_color = ['          - star_color=red\n' if "star_color" in line else line for line in lines_ratings]
-        else:
-            print("Elige una versión valida[v1, v2, v3]")
-		exit()
+    if version == "v1":
+        lines_version = ['          - service_version=v1\n' if "service_version" in line else line for line in lines]
+        lines_ratings = ['          - enable_ratings=false\n' if "enable_ratings" in line else line for line in lines_version]
+        lines_color = ['          - star_color=black\n' if "star_color" in line else line for line in lines_ratings]
+    elif version == "v2":
+        lines_version = ['          - service_version=v2\n' if "service_version" in line else line for line in lines]
+        lines_ratings = ['          - enable_ratings=true\n' if "enable_ratings" in line else line for line in lines_version]
+        lines_color = ['          - star_color=black\n' if "star_color" in line else line for line in lines_ratings]
+    elif version == "v3":
+        lines_version = ['          - service_version=v3\n' if "service_version" in line else line for line in lines]
+        lines_ratings = ['          - enable_ratings=true\n' if "enable_ratings" in line else line for line in lines_version]
+        lines_color = ['          - star_color=red\n' if "star_color" in line else line for line in lines_ratings]
+    else:
+        print("Elige una versión valida[v1, v2, v3]")
+        exit()
 
     with open("docker-compose.yml", "w") as f:
         f.writelines(lines_color)
