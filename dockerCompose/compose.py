@@ -19,6 +19,7 @@ def cambiarCompose(version):
             lines_color = ['          - star_color=red\n' if "star_color" in line else line for line in lines_ratings]
         else:
             print("Elige una versión valida[v1, v2, v3]")
+		exit()
 
     with open("docker-compose.yml", "w") as f:
         f.writelines(lines_color)
@@ -60,4 +61,4 @@ call(["sudo","docker","build","-t","g14/details","Details/"])
 call(["sudo","docker","build","-t","g14/ratings","Ratings/"])
 
 #----------------------------docker-compose----------------------------------------------
-#call(["sudo","docker-compose","up","-d"])
+call(["sudo","docker-compose","up","-d"])
