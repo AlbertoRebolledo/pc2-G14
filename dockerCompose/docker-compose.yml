@@ -1,21 +1,30 @@
-version: "2.2"
+version: "3.3"
 services:
   g14-details:
+    container_name: g14-details
     image: g14/details
+    ports:
+      - "9080"
   g14-ratings:
+    container_name: g14-ratings
     image: g14/ratings
+    ports:
+      - "9080"
   g14-reviews:
+    container_name: g14-reviews
     image: g14/reviews
+    ports:
+      - "9080"
     environment:
       - service_version=v1
       - enable_ratings=false
       - star_color=black
-    links:
-      - g14-ratings
   g14-productpage:
+    container_name: g14-productpage
     image: g14/productpage
     ports:
       - "9080:9080"
-    links:
-      - g14-details
-      - g14-reviews
+    environment:
+      - DETAILS_HOSTNAME=g14-details
+      - REVIEWS_HOSTNAME=g14-reviews
+      - RATINGS_HOSTNAME=g14-ratings

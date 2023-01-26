@@ -46,16 +46,9 @@ os.chdir(r'practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg')
 pwd = os.getcwd()
 call(["sudo", "docker", "run", "--rm", "-u", "root", "-v", str(pwd)+":/home/gradle/project", "-w", "/home/gradle/project", "gradle:4.8.1", "gradle", "clean", "build"])
 os.chdir(r"../../../../../")
-    #----------------------------------------------imagenes de reviews-------------------------------------------------------------
-
-if version == "v1":
-    call(["sudo","docker","build","-t","g14/reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
-elif version == "v2":
-    call(["sudo","docker","build","-t","g14/reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
-elif version == "v3":
-    call(["sudo","docker","build","-t","g14/reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
 
 #--------------------------------creación de las imagenes del resto de microservicios-------------------------
+call(["sudo","docker","build","-t","g14/reviews","practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg"])
 call(["sudo","docker","build","-t","g14/productpage","ProductPage/"])
 call(["sudo","docker","build","-t","g14/details","Details/"])
 call(["sudo","docker","build","-t","g14/ratings","Ratings/"])
