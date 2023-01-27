@@ -16,9 +16,10 @@ services:
     ports:
       - "9081:9080"
     environment:
-      - SERVICE_VERSION=v2
+      - SERVICE_VERSION=v3
       - ENABLE_RATINGS=true
-      - STAR_COLOR=black
+      - STAR_COLOR=red
+      - RATINGS_HOSTNAME=g14-ratings
   g14-productpage:
     container_name: g14-productpage
     image: g14/productpage
