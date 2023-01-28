@@ -32,8 +32,8 @@ cambiarCompose(version)
 #------------------------comandos de instalación-------------------------------------------------------
 call(["git","clone","https://github.com/CDPS-ETSIT/practica_creativa2.git"])
 call(["sudo","apt","update"])
-call(["sudo","apt","install","docker.io"])
-call(["sudo","apt","install","docker-compose"])
+call(["sudo","apt","install", "-y","docker.io"])
+call(["sudo","apt","install", "-y","docker-compose"])
 
 #-------------------------mover ficheros------------------------------------------
 call(["cp","-r","practica_creativa2/bookinfo/src/productpage/","ProductPage/"])

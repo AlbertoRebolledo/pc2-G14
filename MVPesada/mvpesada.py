@@ -8,7 +8,7 @@ os.environ['GROUP_NUMBER'] = '14'
 #------------------------comandos de instalación-------------------------------------------------------
 call(["git","clone","https://github.com/CDPS-ETSIT/practica_creativa2.git"])
 call(["sudo","apt","update"])
-call(["sudo","apt","install","python3-pip"])
+call(["sudo","apt","install", "-y", "python3-pip"])
 
 #------------------modificar requirements.txt-------------------------------------------------------
 with open("practica_creativa2/bookinfo/src/productpage/requirements.txt","r") as file: #si falla t
