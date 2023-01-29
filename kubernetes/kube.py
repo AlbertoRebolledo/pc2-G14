@@ -2,7 +2,7 @@ from subprocess import call
 import sys
 import os
 
-def cambiarCompose(version):
+def cambiarVersion(version):
     with open("docker-compose.yml", "r") as f:
         lines = f.readlines()
     if version == "v1":
@@ -27,7 +27,7 @@ def cambiarCompose(version):
 version = sys.argv[1]
 
 #-----------------------------cambiar versión en fichero compose-----------------------------------------
-#cambiarCompose(version)
+#cambiarVersion(version)
 
 #------------------------comandos de instalación-------------------------------------------------------
 call(["git","clone","https://github.com/CDPS-ETSIT/practica_creativa2.git"])
@@ -59,7 +59,7 @@ call(["sudo","docker","build","-t","g14/ratings","Ratings/"])
 
 #----------------------------------lanzamineto de kubernetes--------------------------------------------------
 call(["kubectl","apply","-f","practica_creativa2/bookinfo/platform/kube/reviews-svc.yaml"])
-call(["kubectl","apply","-f","Productpage/productpage.yaml"])
+call(["kubectl","apply","-f","Productpage/productPage.yaml"])
 call(["kubectl","apply","-f","Details/details.yaml"])
 call(["kubectl","apply","-f","Ratings/ratings.yaml"])
 
