@@ -58,12 +58,10 @@ call(["sudo","docker","build","-t","g14/details","Details/"])
 call(["sudo","docker","build","-t","g14/ratings","Ratings/"])
 
 #----------------------------------lanzamineto de kubernetes--------------------------------------------------
-call(["kubectl","apply","-f","practica_creativa2/bookinfo/platform/kube/ratings.yaml"])
 call(["kubectl","apply","-f","practica_creativa2/bookinfo/platform/kube/reviews-svc.yaml"])
+call(["kubectl","apply","-f","Productpage/productpage.yaml"])
 call(["kubectl","apply","-f","Details/details.yaml"])
 call(["kubectl","apply","-f","Ratings/ratings.yaml"])
-call(["kubectl","apply","-f","Productpage/productpage.yaml"])
-call(["kubectl","apply","-f","Reviews/reviews-svc.yaml"])
 
 if version == "v1":
     call(["kubectl","apply","-f","Reviews/reviews-v1-deployment.yaml"])
