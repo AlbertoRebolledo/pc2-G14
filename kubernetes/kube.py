@@ -71,3 +71,6 @@ elif version == "v2":
     call(["kubectl","apply","-f","Reviews/reviews-v2-deployment.yaml"])
 elif version == "v3":
     call(["kubectl","apply","-f","Reviews/reviews-v3-deployment.yaml"])
+
+#--------------------------------exponer puerto--------------------------------------------------------
+call(["kubectl","expose","deployment","productpage-v1","--type=LoadBalancer","--","port=9080"])

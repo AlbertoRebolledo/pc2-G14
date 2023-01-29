@@ -37,13 +37,6 @@ spec:
       containers:
       - name: productpage
         image: g14/productpage
-        env:
-        - name: DETAILS_HOSTNAME
-          value: g14-details
-        - name: REVIEWS_HOSTNAME
-          value: g14-reviews
-        - name: RATINGS_HOSTNAME
-          value: g14-ratings
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080

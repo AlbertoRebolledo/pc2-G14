@@ -27,14 +27,6 @@ spec:
         env:
         - name: LOG_DIR
           value: "/tmp/logs"
-        - name: SERVICE_VERSION
-          value: v2
-        - name: ENABLE_RATINGS
-          value: true
-        - name: STAR_COLOR
-          value: black
-        - name: RATINGS_HOSTNAME
-          value: g14-ratings
         ports:
         - containerPort: 9080
         volumeMounts:
